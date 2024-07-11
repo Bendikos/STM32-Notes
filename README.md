@@ -79,13 +79,13 @@ STM32可以选择一个时钟信号输出到MCO脚(PA8)上; 可以选择为PLL�
 4. APB1外设: 送给APB1分频器。APB1分频器可选择1、2、4、8、16分频; 其输出一路供APB1外设使用(PCLK1; 最大频率36MHz); 另一路送给通用定时器使用。该倍频器可选择1或者2倍频; 时钟输出供定时器2-7使用。
 5. APB2外设: 送给APB2分频器。APB2分频器可选择1、2、4、8、16分频; 其输出一路供APB2外设使用(PCLK2; 最大频率72MHz); 另一路送给高级定时器。该倍频器可选择1或者2倍频; 时钟输出供定时器1和定时器8使用。
 
-另外; APB2分频器还有一路输出供ADC分频器使用; 分频后送给ADC模块使用。ADC分频器可选择为2、4、6、8分频。
+另外,  APB2分频器还有一路输出供ADC分频器使用; 分频后送给ADC模块使用。ADC分频器可选择为2、4、6、8分频。
 
 需要注意的是; 如果 APB 预分频器分频系数是 1; 则定时器时钟频率 (TIMxCLK) 为 PCLKx。否则; 定   时器时钟频率将为 APB 域的频率的两倍: TIMxCLK = 2xPCLKx。 
 
 ## APB1和APB2的对应外设
 
-F1系列
+**F1系列**
 
 ![F1系列](picture/F1系列.png)
 
@@ -93,7 +93,7 @@ APB1上面连接的是低速外设; 包括电源接口、备份接口、CAN、US
 
 而APB2上面连接的是高速外设; 包括UART1、SPI1、Timer1、ADC1、ADC2、ADC3、所有的普通I/O口 (PA-PE) 、第二功能I/O (AFIO) 口等。
 
-F4系列
+**F4系列**
 
 ![F4系列](picture/F4系列.png)
 
@@ -105,7 +105,7 @@ APB1总线: 通用定时器timer2\~timer5; 通用定时器timer12\~timer14以及
 
 F4系列的系统时钟频率最高能到168M
 
-具体可以在 stm32f10x_rcc.h和stm32f40x_rcc.h中查看或者通过STM32参考手册搜索“系统架构”或者“系统结构”查看外设挂在哪个时钟下
+具体可以在 `stm32f10x_rcc.h`和`stm32f40x_rcc.h`中查看或者通过STM32参考手册搜索“系统架构”或者“系统结构”查看外设挂在哪个时钟下
 
 ## RCC
 
@@ -428,19 +428,19 @@ GPIO_AF15_EVENTOUT
 
 ### GPIO mode define GPIO模式宏定义列表
 
-| 宏定义                       | 解释                    |
-| ---------------------------- | ----------------------- |
-| GPIO_MODE_INPUT              | 浮空输入                |
-| GPIO_MODE_OUTPUT_PP          | 推挽输出                |
-| GPIO_MODE_OUTPUT_OD          | 开漏输出                |
-| GPIO_MODE_AF_PP              | 推挽复用输出            |
-| GPIO_MODE_AF_OD              | 开漏复用输出            |
-| GPIO_MODE_ANALOG             | 模拟                    |
-| GPIO_MODE_IT_RISING          | 上升沿触发外部中断      |
-| GPIO_MODE_IT_FALLING         | 下降沿触发外部中断      |
+|            宏定义            |          解释           |
+| :--------------------------: | :---------------------: |
+|       GPIO_MODE_INPUT        |        浮空输入         |
+|     GPIO_MODE_OUTPUT_PP      |        推挽输出         |
+|     GPIO_MODE_OUTPUT_OD      |        开漏输出         |
+|       GPIO_MODE_AF_PP        |      推挽复用输出       |
+|       GPIO_MODE_AF_OD        |      开漏复用输出       |
+|       GPIO_MODE_ANALOG       |          模拟           |
+|     GPIO_MODE_IT_RISING      |   上升沿触发外部中断    |
+|     GPIO_MODE_IT_FALLING     |   下降沿触发外部中断    |
 | GPIO_MODE_IT_RISING_FALLING  | 上升/下降沿触发外部中断 |
-| GPIO_MODE_EVT_RISING         | 上升沿触发外部事件      |
-| GPIO_MODE_EVT_FALLING        | 下降沿触发外部事件      |
+|     GPIO_MODE_EVT_RISING     |   上升沿触发外部事件    |
+|    GPIO_MODE_EVT_FALLING     |   下降沿触发外部事件    |
 | GPIO_MODE_EVT_RISING_FALLING | 上升/下降沿触发外部事件 |
 
 ### GPIO pins define GPIO引脚序列定义列表
@@ -468,19 +468,19 @@ GPIO_PIN_MASK
 
 ### GPIO pull define GPIO上下拉定义列表
 
-| **宏定义**    | **解释**     |
-| ------------- | ------------ |
-| GPIO_NOPULL   | 不激活上下拉 |
-| GPIO_PULLUP   | 上拉激活     |
-| GPIO_PULLDOWN | 下拉激活     |
+|    宏定义     |     解释     |
+| :-----------: | :----------: |
+|  GPIO_NOPULL  | 不激活上下拉 |
+|  GPIO_PULLUP  |   上拉激活   |
+| GPIO_PULLDOWN |   下拉激活   |
 
 ### GPIO speed define GPIO速度定义列表
 
-| **宏定义**                | **解释**               |
-| :------------------------ | ---------------------- |
-| GPIO_SPEED_FREQ_LOW       | 工作速度 2MHz          |
-| GPIO_SPEED_FREQ_MEDIUM    | 工作速度 12.5MHz~50MHz |
-| GPIO_SPEED_FREQ_HIGH      | 工作速度 50MHz~100MHz  |
+|          宏定义           |          解释          |
+| :-----------------------: | :--------------------: |
+|    GPIO_SPEED_FREQ_LOW    |     工作速度 2MHz      |
+|  GPIO_SPEED_FREQ_MEDIUM   | 工作速度 12.5MHz~50MHz |
+|   GPIO_SPEED_FREQ_HIGH    | 工作速度 50MHz~100MHz  |
 | GPIO_SPEED_FREQ_VERY_HIGH | 工作速度 100MHz~200MHz |
 
 # 外部中断
