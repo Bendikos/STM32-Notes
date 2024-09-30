@@ -542,10 +542,6 @@ EXTI 即是外部中断和事件控制器; 它是由 20 个产生事件/中断�
 
 EXTI 的功能框图是最直接把有关 EXTI 的知识点连接起来的图; 掌握了该图的来龙去脉; 就会对 EXTI 有了一个整体熟悉; 编程时候可以得心应手。
 
-
-
-
-
 ![EXTI 的功能框图](picture/EXTI 的功能框图.png)
 
 从 EXTI 功能框图可以看到有两条主线; 一条是由输入线到 NVIC 中断控制器; 一条是由输入线到脉冲发生器。这就恰恰是 EXTI 的两大部分功能; 产生中断与产生事件; 两者从硬件上就存在不同。
@@ -757,7 +753,7 @@ if (((isrflags &USART_SR_TC) != RESET) && ((cr1its &USART_CR1_TCIE) != RESET))
 }
 ```
 
-可以看到; 发送完成会调用`UART_EndTransmit_IT(huart)` 这哥们儿会调用`HAL_UART_TxCpltCallback(huart)`, 没错你去定义它; 然后写上发送完要干什么事情就行了。
+可以看到; 发送完成会调用`UART_EndTransmit_IT(huart)` 这哥们会调用`HAL_UART_TxCpltCallback(huart)`, 没错你去定义它; 然后写上发送完要干什么事情就行了。
 
 ```c
 static HAL_StatusTypeDef UART_EndTransmit_IT(UART_HandleTypeDef *huart)
